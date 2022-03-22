@@ -1,0 +1,5 @@
+#Django
+env_*/
+__pycache__/
+*.py[c]
+#Vue
