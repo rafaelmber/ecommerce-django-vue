@@ -22,7 +22,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category,related_name='products',on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     slug = models.SlugField()
-    description = models.TimeField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=6,decimal_places=2)
     image = models.ImageField(upload_to='uploads/',blank=True, null=True)
     thumbnail = models.ImageField(upload_to='uploads/',blank=True, null=True)
@@ -55,7 +55,7 @@ class Product(models.Model):
 
     def make_thumbnail(self, image, size=(300,200)):
         img = Image.open(image)
-        img.convert('RBG')
+        img.convert('RGB')
         img.thumbnail(size=size)
 
         thumb_io = BytesIO()
