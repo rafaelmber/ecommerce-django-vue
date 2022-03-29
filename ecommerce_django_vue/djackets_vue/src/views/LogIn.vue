@@ -58,24 +58,24 @@ export default {
         password: this.password,
       };
       await axios
-        .post('/api/v1/token/login', formData)
+        .post('/api/v1/token/login/', formData)
         .then((response) => {
           const token = response.data.auth_token;
           this.$store.commit('setToken', token);
+
           axios.defaults.headers.common['Authorization'] = 'Token ' + token;
           localStorage.setItem('token', token);
-          const toPath = this.$store.query.to || '/cart';
+          const toPath = this.$route.query.to || '/cart';
           this.$router.push(toPath);
         })
         .catch((error) => {
           if (error.response) {
             for (const property in error.response.data) {
-              this.errors.push(
-                `${property} : ${error.response.data[property]}`
-              );
+              this.errors.push(`${property}: ${error.response.data[property]}`);
             }
           } else {
-            this.errors.push('Something went wrong, please try again');
+            this.errors.push('Something went wrong. Please try again');
+
             console.log(JSON.stringify(error));
           }
         });
