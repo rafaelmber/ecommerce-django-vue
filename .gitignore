@@ -5,4 +5,5 @@ __pycache__/
 *.py[c]
 *.env
 .env
+commands.sh
 #Vue
