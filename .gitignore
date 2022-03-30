@@ -3,4 +3,6 @@ env_*/
 __pycache__/
 *.sqlite3
 *.py[c]
+*.env
+.env
 #Vue
